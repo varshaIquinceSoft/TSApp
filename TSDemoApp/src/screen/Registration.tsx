@@ -3,32 +3,39 @@ import { View,Text,StyleSheet, TouchableOpacity, SafeAreaView } from "react-nati
 import { Button, TextInput } from "react-native-paper";
 import Header from "../components/Header";
 import InputField from "../components/InputField";
+import {firebaseRegistration} from "../firebaseAuth";
 
 const Registration:React.FC = (props) => {
-
- const [name,setName] = useState('');
-    const [email,setEmail] = useState('');
-    const [password,setPassword] = useState('');
-    const [confirmPassword,setConfirmPassword] = useState('');
+    const [email,setEmail] = useState<String>('');
+    const [password,setPassword] = useState<String>('');
+    const [name,setName] = useState<String>('');
+    const [confirmPassword,setConfirmPassword] = useState<String>('');
+   
 
     const onRegistration = () =>{
+        const callback={
+            sccess : function(){
+              props.navigation.navigate('Login');
+            },
+            error : function(msg:String){
+              alert('Registration Failed!');
+            }
+          }
         console.log('EMail :',email);
         console.log('Password :',password);
+        firebaseRegistration(email,password,callback);
     }
-    // const onBack=()=>{
-    //     console.log('back press');
-    // }
     return(
         <SafeAreaView style={styles.container}>
               <Header title='Registration' navigation={props.navigation}/>
             <View style={styles.loginView}>
               
-            <InputField title= 'Name' onInputChanged={setEmail}/>
+            <InputField title= 'Name' onInputChanged={setName}/>
             <InputField title= 'Email' onInputChanged={setEmail}/>
-            <InputField title= 'Password' onInputChanged={setEmail}/>
-            <InputField title= 'Confirm Password' onInputChanged={setPassword}/>
+            <InputField title= 'Password' onInputChanged={setPassword} secure={true}/>
+            <InputField title= 'Confirm Password' onInputChanged={setConfirmPassword} secure={true}/>
             <TouchableOpacity style={styles.button} 
-             onPress={()=> onLogin()}>
+             onPress={()=> onRegistration()}>
                 <Text style={styles.buttonTxt}>Submit</Text>
                </TouchableOpacity>
             </View>

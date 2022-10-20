@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { View,Text,StyleSheet, TouchableOpacity, SafeAreaView } from "react-native";
+import { View,Text,StyleSheet, TouchableOpacity, SafeAreaView, Alert } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import Header from "../components/Header";
 import InputField from "../components/InputField";
-
+import {firebaseLogin, firebaseRegistration} from "../firebaseAuth";
 
 const Login:React.FC = (props) => {
     const [email,setEmail] = useState('');
@@ -11,9 +11,19 @@ const Login:React.FC = (props) => {
     console.log('Login Props :',props);
 
     const onLogin = () =>{
+        const callback={
+          sccess : function(){
+            props.navigation.navigate('UserData');
+          },
+          error : function(msg:String){
+            alert('Login Failed!');
+          }
+        }
         console.log('EMail :',email);
         console.log('Password :',password);
-        props.navigation.navigate('UserData');
+        firebaseLogin(email,password,callback);
+        // firebaseRegistration(email,password,'User account created successfully!');
+       
     }
     const OnSignPress = ()=>{
      props.navigation.navigate('Registration');

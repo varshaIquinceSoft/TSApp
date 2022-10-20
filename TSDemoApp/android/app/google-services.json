@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "489817806771",
+    "project_id": "tsdemoapp-1744b",
+    "storage_bucket": "tsdemoapp-1744b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489817806771:android:efb9b8fc27227d1f2b1dc6",
+        "android_client_info": {
+          "package_name": "com.tsdemoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489817806771-li3vtp63aebt5b78c0o2rsb1il97cvnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWwnI-w6gz35FNqW82EgMJ7InpkA6yzWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489817806771-li3vtp63aebt5b78c0o2rsb1il97cvnd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

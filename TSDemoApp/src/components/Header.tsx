@@ -22,18 +22,16 @@ const Header:React.FC=(props)=>{
         {
            props.navigation?
             <TouchableOpacity onPress={()=>onBack()}>
-                <Text style={{color:'white'}}>Back</Text>
+                <Icon name='chevron-back' size={30} color={'white'}/>
                 </TouchableOpacity>
-            // <Icon name='chevron-back' size={30} color={'white'}/>
             :null
         }
-        
         </TouchableOpacity>
         <Text style={styles.hederTitle}>{props.title}</Text>
         {
             props.add?
             <TouchableOpacity onPress={()=>addUserData()}>
-            <Text style={{color:'white'}}>Add</Text>
+            <Icon name='add' size={30} color={'white'}/>
             </TouchableOpacity>
             :null
         }
