@@ -4,11 +4,9 @@ import { Button, TextInput } from "react-native-paper";
 import Header from "../components/Header";
 import InputField from "../components/InputField";
 
+const Registration:React.FC = (props) => {
 
-
-const Registration:React.FC = () => {
-
-    const [name,setName] = useState('');
+ const [name,setName] = useState('');
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [confirmPassword,setConfirmPassword] = useState('');
@@ -17,12 +15,12 @@ const Registration:React.FC = () => {
         console.log('EMail :',email);
         console.log('Password :',password);
     }
-    const onBack=()=>{
-        console.log('back press');
-    }
+    // const onBack=()=>{
+    //     console.log('back press');
+    // }
     return(
         <SafeAreaView style={styles.container}>
-              <Header title='Registration' onBack={onBack}/>
+              <Header title='Registration' navigation={props.navigation}/>
             <View style={styles.loginView}>
               
             <InputField title= 'Name' onInputChanged={setEmail}/>
@@ -66,7 +64,8 @@ const styles  = StyleSheet.create({
         height:40,
         borderRadius:10,
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        marginTop:20
     },
     buttonTxt:{
         color:'white',

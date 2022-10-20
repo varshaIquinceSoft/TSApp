@@ -1,18 +1,42 @@
+import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import { View,StyleSheet,TouchableOpacity,Text } from "react-native";
-import Icon from 'react-native-vector-icons/AntDesign'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 type props={
     title:String;
-    onBack?:()=>{}
+    navigation?;
+    add?: Boolean; 
 }
+
 const Header:React.FC=(props)=>{
+    const onBack=()=>{
+        props.navigation.goBack();
+    }
+    const addUserData=()=>{
+        props.navigation.navigate('DummyPost');
+    }
     return(
         <View style={styles.headerView}>
         <TouchableOpacity onPress={props.onBack}>
-        {/* <Icon name='chevron-back' size={30} color={'white'}/> */}
+        {
+           props.navigation?
+            <TouchableOpacity onPress={()=>onBack()}>
+                <Text style={{color:'white'}}>Back</Text>
+                </TouchableOpacity>
+            // <Icon name='chevron-back' size={30} color={'white'}/>
+            :null
+        }
+        
         </TouchableOpacity>
         <Text style={styles.hederTitle}>{props.title}</Text>
+        {
+            props.add?
+            <TouchableOpacity onPress={()=>addUserData()}>
+            <Text style={{color:'white'}}>Add</Text>
+            </TouchableOpacity>
+            :null
+        }
     </View>
     )
 }
@@ -31,7 +55,7 @@ const styles = StyleSheet.create({
         color:'white',
         fontSize:18,
         textAlign:'center',
-        width:'85%',
+        width:'80%',
         fontWeight:'bold'
     }
 })

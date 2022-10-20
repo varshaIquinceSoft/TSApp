@@ -5,7 +5,7 @@ import { getDetail } from "../api";
 import Header from "../components/Header";
 import InputField from "../components/InputField";
 
-const UserData:React.FC = () => {
+const UserData:React.FC =(props) => {
   const [data,setData] = useState();
 
     const getData = async()=>{
@@ -19,8 +19,7 @@ const UserData:React.FC = () => {
 
     return(
         <SafeAreaView style={styles.container}>
-             <Header title='User Data'/>
-            
+             <Header title='User Data'  navigation={props.navigation} add={true}/>
            <FlatList 
            data={data}
            renderItem = {({item})=>{

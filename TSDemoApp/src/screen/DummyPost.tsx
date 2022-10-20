@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import InputField from "../components/InputField";
 
 
-const DummyPost:React.FC = () => {
+const DummyPost:React.FC = (props) => {
     const [title,setTitle] = useState('');
     const [description,setDescription] = useState('');
     const onBack=()=>{
@@ -29,7 +29,7 @@ const DummyPost:React.FC = () => {
     }
     return(
         <SafeAreaView style={styles.container}>
-             <Header title='User' onBack={onBack}/>
+             <Header title='User'  navigation={props.navigation}/>
             <View style={styles.loginView}>
             <InputField title= 'Title' onInputChanged={setTitle}/>
             <InputField title= 'Description'

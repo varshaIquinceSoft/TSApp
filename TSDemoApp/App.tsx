@@ -1,5 +1,7 @@
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
+import Stack from './src/navigation/Stack';
 import DummyPost from './src/screen/DummyPost';
 import Login from './src/screen/Login';
 import Registration from './src/screen/Registration';
@@ -70,7 +72,9 @@ import UserData from './src/screen/UserData';
 
 const App:React.FC =()=>{
   return(
-    <DummyPost/>
+    <NavigationContainer>
+       <Stack/>
+    </NavigationContainer>
   )
 }
 export default App;
