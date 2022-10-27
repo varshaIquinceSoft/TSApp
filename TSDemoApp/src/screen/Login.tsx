@@ -4,6 +4,7 @@ import { Button, TextInput } from "react-native-paper";
 import Header from "../components/Header";
 import InputField from "../components/InputField";
 import {firebaseLogin, firebaseRegistration} from "../firebaseAuth";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Login:React.FC = (props) => {
     const [email,setEmail] = useState('');
@@ -12,7 +13,9 @@ const Login:React.FC = (props) => {
 
     const onLogin = () =>{
         const callback={
-          sccess : function(){
+          sccess : function(auth:object){
+            console.log('auth :', auth);
+            AsyncStorage.setItem('auth',JSON.stringify(auth));
             props.navigation.navigate('UserData');
           },
           error : function(msg:String){
@@ -68,16 +71,17 @@ const styles  = StyleSheet.create({
       flexDirection:'column',
       width:'90%',
     //   flex:1,
-      height:'30%',
+      // height:'50%',
       alignItems:'center',
-      justifyContent:'center',
+      // justifyContent:'center',
     },
     signUpView:{
         flexDirection:'row',
         width:'100%',
         justifyContent:'space-between',
-        flex:1,
-        alignItems:'center'
+        // flex:1,
+        alignItems:'center',
+        marginTop:10
     },
     signUpLine:{
       borderWidth:1,
